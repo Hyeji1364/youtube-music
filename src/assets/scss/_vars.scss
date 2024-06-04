@@ -1,6 +1,8 @@
 :root {
     --fontE: "S-CoreDream-3Light";
     --fontS: "SUITE-Regular";
+    --fontC: "Cafe24Supermagic-Bold-v1.0";
+    --fontT: "TTTtangsbudaejjigaeB";
 
     --black: #000;
     --black100: #111;
@@ -8,12 +10,16 @@
     --black300: #333;
     --black400: #444;
     --black500: #555;
+
     --white: #fff;
-    --white100: #fff;
-    --white200: #fff;
-    --white300: #fff;
-    --white400: #fff;
-    --white500: #fff;
+    --white100: #f9f9f9;
+    --white200: #eeeeee;
+    --white300: #dfdfdf;
+    --white400: #cfcfcf;
+    --white500: #c0c0c0;
+
+    --pointColor: #2961e4;
+    --mainBg: #f3f3f381;
 
     // 폰트 셋팅
     font-family: var(--fontE);
