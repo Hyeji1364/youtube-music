@@ -7,6 +7,8 @@ npm i react-router-dom
 npm i sass
 npm i react-icons
 npm i react-player
+npm i react-spinners
+npm install react-datepicker --save : 날짜별 확인
 ````
 
 # 상태관리
