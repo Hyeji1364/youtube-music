@@ -1,202 +1,154 @@
-import React, { useContext, useRef, useState, useEffect } from 'react';
-import { IoMusicalNotes, IoPlaySkipForward, IoPlaySkipBack, IoPlay, IoPause, IoRepeat, IoShuffleOutline } from 'react-icons/io5';
+import React, { useContext, useEffect, useRef } from 'react';
 import { MusicPlayerContext } from '../context/MusicPlayerProvider';
+import { IoMusicalNotes, IoPlaySkipForward, IoPlaySkipBack, IoPlay, IoPause, IoRepeat, IoShuffleOutline } from 'react-icons/io5';
 import ReactPlayer from 'react-player';
 
 const Aside = () => {
-    const { musicData } = useContext(MusicPlayerContext);   // 노래 데이터
-    const [currentIndex, setCurrentIndex] = useState(0);    // 현재 노래 정보(0)
-    const [isPlaying, setIsPlaying] = useState(false);      // 현재 플레이 상태(시작/정지)
-    const [played, setPlayed] = useState(0);                // 현재 노래 진행바
-    const [duration, setDuration] = useState(0);            // 현재 노래 작동시간
-    const [isShuffling, setIsShuffling] = useState(false);  // 섞어서 재생 상태
-    const [isRepeating, setIsRepeating] = useState(false);  // 전체 반복 재생 상태
-    const [volume, setVolume] = useState(0.5);              // 볼륨 상태
-    const playerRef = useRef(null);                         // 현재 노래 레퍼런스
-    const trackRefs = useRef([]);                           // 트랙 레퍼런스
+    const {
+        musicData,
+        currentTrackIndex,
+        isPlaying,
+        played,
+        duration,
+        playTrack,
+        pauseTrack,
+        nextTrack,
+        prevTrack,
+        updatePlayed,
+        updateDuration,
+        toggleShuffle,
+        isShuffling,
+        toggleRepeat,
+        isRepeating,
+        handleTrackEnd
+    } = useContext(MusicPlayerContext);
 
-    const currentTrack = musicData.length > 0 ? musicData[currentIndex] : null;
-
-    useEffect(() => {
-        const volumeRange = document.getElementById('volume-range');
-        if (volumeRange) {
-            volumeRange.style.background = `linear-gradient(to right, #5779FF 0%, #7E56FF ${volume * 100}%, #ddd ${volume * 100}%, #ddd 100%)`;
-        }
-    }, [volume]);
-
-    const updateProgressBackground = (value) => {
-        const progressRange = document.getElementById('progress-range');
-        if (progressRange) {
-            progressRange.style.background = `linear-gradient(to right, #5779FF 0%, #7E56FF ${value * 100}%, #ddd ${value * 100}%, #ddd 100%)`;
-        }
-    };
+    const currentTrackRef = useRef(null);
+    const playerRef = useRef(null);
 
     useEffect(() => {
-        updateProgressBackground(played);
-    }, [played]);
-
-    useEffect(() => {
-        if (trackRefs.current[currentIndex]) {
-            trackRefs.current[currentIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        if (currentTrackRef.current) {
+            currentTrackRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
-    }, [currentIndex]);
+    }, [currentTrackIndex]);
 
-      // 노래 플레이 상태
-      const playTrack = (index) => {
-        setCurrentIndex(index);
-        setIsPlaying(true);
-        setPlayed(0);
-        updateProgressBackground(0);
-    };
+    if (musicData.length === 0) {
+        return <aside id="aside">Loading...</aside>;
+    }
 
-    // 노래 정지
-    const pauseTrack = () => {
-        setIsPlaying(false);
-    };
+    const currentTrack = musicData[currentTrackIndex];
 
-    // 노래 작동 시간
-    const handleDuration = (duration) => {
-        setDuration(duration);
-    };
-
-    // 노래 진행 바 컨트롤
-    const handleSeekChange = (e) => {
-        const newPlayed = parseFloat(e.target.value);
-        setPlayed(newPlayed);
-        updateProgressBackground(newPlayed);
-        playerRef.current.seekTo(newPlayed);
-    };
-
-    // 노래 진행 상태 업데이트
     const handleProgress = (state) => {
-        setPlayed(state.played);
+        updatePlayed(state.played);
     };
 
-    // 노래 다음 곡
-    const handleNext = () => {
-        let nextIndex;
-        if (isShuffling) {
-            nextIndex = Math.floor(Math.random() * musicData.length);
-        } else {
-            nextIndex = (currentIndex + 1) % musicData.length;
+    const handleDuration = (duration) => {
+        updateDuration(duration);
+    };
+
+    const handleSeekChange = (event) => {
+        updatePlayed(parseFloat(event.target.value));
+    };
+
+    const handleSeekMouseUp = (event) => {
+        if (playerRef.current) {
+            playerRef.current.seekTo(parseFloat(event.target.value));
         }
-        setCurrentIndex(nextIndex);
-        setPlayed(0);
-        updateProgressBackground(0);
     };
 
-    // 노래 이전 곡
-    const handlePrev = () => {
-        setCurrentIndex((prevIndex) => (prevIndex - 1 + musicData.length) % musicData.length);
-        setPlayed(0);
-        updateProgressBackground(0);
-    };
-
-    // 노래 종료 시 처리
-    const handleEnded = () => {
-        handleNext();
-    };
-
-    // 섞어서 재생 상태 토글
-    const toggleShuffle = () => {
-        setIsShuffling(!isShuffling);
-    };
-
-    // 전체 반복 재생 상태 토글
-    const toggleRepeat = () => {
-        setIsRepeating(!isRepeating);
-    };
-
-    // 볼륨 조절 핸들러
-    const handleVolumeChange = (e) => {
-        const newVolume = parseFloat(e.target.value) / 100;
-        setVolume(newVolume);
-        document.documentElement.style.setProperty('--volume-level', newVolume * 100 + '%');
-    };
-
-    // 노래 시간 포맷
     const formatTime = (seconds) => {
-        if (!seconds) return '00:00';
         const minutes = Math.floor(seconds / 60);
         const secs = Math.floor(seconds % 60);
         return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
     };
 
+    const handleTrackEndModified = () => {
+        if (isRepeating) {
+            playerRef.current.seekTo(0);
+            playTrack(currentTrackIndex);
+        } else {
+            handleTrackEnd();
+        }
+    };
+
     return (
-        <aside id='aside'>
-            <div className='play-now'>
-                <h2><IoMusicalNotes /> Now Playing</h2>
-                <div className='thumb'>
-                    <div className='img'>
+        <aside id="aside">
+            <div className="play-now">
+                <h2>
+                    <IoMusicalNotes /> Now Playing
+                </h2>
+                <div className="thumb">
+                    <div className="img">
                         {currentTrack && (
                             <ReactPlayer
                                 ref={playerRef}
                                 url={`https://www.youtube.com/watch?v=${currentTrack.videoID}`}
-                                playing={isPlaying}
                                 controls={false}
                                 width="100%"
                                 height="100%"
-                                volume={volume}
-                                onDuration={handleDuration}
+                                playing={isPlaying}
+                                onEnded={handleTrackEndModified}
                                 onProgress={handleProgress}
-                                onEnded={handleEnded}
+                                onDuration={handleDuration}
                             />
                         )}
                     </div>
-                    <span className='title'>{currentTrack?.title || '선택된 노래가 없습니다.'}</span>
-                    <span className='artist'>{currentTrack?.artist || '😝 노래 클릭'}</span>
+                    {currentTrack && (
+                        <>
+                            <span className="title">{currentTrack.title}</span>
+                            <span className="artist">{currentTrack.artist}</span>
+                        </>
+                    )}
                 </div>
-                <div className='progress'>
-                    <div className='progress-bar'>
+
+                <div className="progress">
+                    <div className="progress-bar">
                         <input
-                            id='progress-range'
-                            type='range'
-                            min='0'
-                            max='1'
-                            step='0.01'
+                            type="range"
+                            min="0"
+                            max="1"
+                            step="0.01"
                             value={played}
-                            onInput={handleSeekChange}
+                            onChange={handleSeekChange}
+                            onMouseUp={handleSeekMouseUp}
                         />
                     </div>
-                    <div className='times'>
-                        <span className='current'>{formatTime(played * duration)}</span>
-                        <span className='total'>{formatTime(duration)}</span>
+                    <div className="times">
+                        <span className="current-time">{formatTime(played * duration)}</span>
+                        <span className="total-time">{formatTime(duration)}</span>
+                    </div>
+                    <div className="controls">
+                        <span className={`shuffle ${isShuffling ? 'active' : ''}`} onClick={toggleShuffle}>
+                            <IoShuffleOutline />
+                        </span>
+                        <span className="prev" onClick={prevTrack}>
+                            <IoPlaySkipBack />
+                        </span>
+                        <span className="play bg" onClick={isPlaying ? pauseTrack : () => playTrack(currentTrackIndex)}>
+                            {isPlaying ? <IoPause /> : <IoPlay />}
+                        </span>
+                        <span className="next" onClick={nextTrack}>
+                            <IoPlaySkipForward />
+                        </span>
+                        <span className={`repeat ${isRepeating ? 'active' : ''}`} onClick={toggleRepeat}>
+                            <IoRepeat />
+                        </span>
                     </div>
                 </div>
-                <div className='controls'>
-                    <span className={`shuffle ${isShuffling ? 'active' : ''}`} onClick={toggleShuffle}><IoShuffleOutline /></span>
-                    <span className='prev' onClick={handlePrev}><IoPlaySkipBack /></span>
-                    {isPlaying ? (
-                        <span className='play bg' onClick={pauseTrack}><IoPause /></span>
-                    ) : (
-                        <span className='play bg' onClick={() => setIsPlaying(true)}><IoPlay /></span>
-                    )}
-                    <span className='next' onClick={handleNext}><IoPlaySkipForward /></span>
-                    <span className={`repeat ${isRepeating ? 'active' : ''}`} onClick={toggleRepeat}><IoRepeat /></span>
-                </div>
-                <div className='volume'>
-                    <input
-                        id='volume-range'
-                        type='range'
-                        min='0'
-                        max='100'
-                        step='1'
-                        value={volume * 100}
-                        onChange={handleVolumeChange}
-                    />
-                </div>
             </div>
-            <div className='play-list'>
+
+            <div className="play-list">
                 <h3><IoMusicalNotes /> Play list</h3>
                 <ul>
                     {musicData.map((track, index) => (
                         <li
                             key={index}
+                            ref={index === currentTrackIndex ? currentTrackRef : null}
                             onClick={() => playTrack(index)}
-                            className={index === currentIndex ? 'current-track' : ''}
+                            className={index === currentTrackIndex ? 'current-track' : ''}
                         >
-                            <span className='img' style={{ backgroundImage: `url(${track.imageURL})` }}></span>
-                            <span className='title'>{track.title}</span>
+                            <span className="img" style={{ backgroundImage: `url(${track.imageURL})` }}></span>
+                            <span className="title">{track.title}</span>
                         </li>
                     ))}
                 </ul>

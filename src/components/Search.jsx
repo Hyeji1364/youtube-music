@@ -1,13 +1,15 @@
-import React from 'react'
+import React from "react";
 import { LuSearch } from "react-icons/lu";
 
 const Search = () => {
     return (
-        <div className='search'>
-            <label htmlFor="searchInput"><LuSearch /></label>
-            <input type="text" placeholder='Search' id='searchInput' />
-        </div>
-    )
-}
+        <article className="search">
+            <label htmlFor="searchInput">
+                <LuSearch />
+            </label>
+            <input type="text" placeholder="Search" id="searchInput" />
+        </article>
+    );
+};
 
-export default Search
+export default Search;

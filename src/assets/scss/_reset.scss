@@ -45,7 +45,7 @@ input,
 select,
 table,
 textarea {
-    font-family: var(--fontE), var(--mainfont-nexon), "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", helvetica, sans-serif;
+    font-family: var(--fontE), "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", helvetica, sans-serif;
 }
 
 // 링크 초기화
@@ -128,7 +128,6 @@ select {
 }
 
 // IR(Image Replacement)
-// 의미가 포함되어 있는 image를 배경으로 표현하고, 텍스트는 보이지 않게 설정하는 방법입니다.
 .ir {
     display: block;
     overflow: hidden;
