@@ -62,7 +62,7 @@ const Header = () => {
                 <li key={i} onClick={() => handleSelectPlaylist(playlistKey)}>
                     <Link to={`/playlist/${playlistKey}`}><span className='icon2'><FcApproval /></span>{playlist.name}</Link>
                     {selectedPlaylist === playlistKey && (
-                        <button onClick={() => handleDeleteItem(playlistKey)}>Delete</button>
+                        <button className="delete-button" onClick={() => handleDeleteItem(playlistKey)}>Delete</button>
                     )}
                 </li>
             );
@@ -72,15 +72,15 @@ const Header = () => {
     return (
         <header id='header' role='banner'>
             <h1 className='logo'>
-                <Link to='/'><IoMusicalNotes />나의 뮤직 챠트</Link>
+                <Link to='/'><IoMusicalNotes />🎧My MUSIC </Link>
             </h1>
             <h2>chart</h2>
             <ul>
-                <li><Link to='chart/melon'><span className='icon'></span>멜론 챠트</Link></li>
-                <li><Link to='chart/bugs'><span className='icon'></span>벅스 챠트</Link></li>
-                <li><Link to='chart/apple'><span className='icon'></span>애플 챠트</Link></li>
-                <li><Link to='chart/genie'><span className='icon'></span>지니 챠트</Link></li>
-                <li><Link to='chart/billboard'><span className='icon'></span>빌보드 챠트</Link></li>
+                <li><Link to='chart/melon'><span className='icon'></span>Melon CHART</Link></li>
+                <li><Link to='chart/bugs'><span className='icon'></span>Bugs CHART</Link></li>
+                <li><Link to='chart/apple'><span className='icon'></span>Apple CHART</Link></li>
+                <li><Link to='chart/genie'><span className='icon'></span>Genie CHART</Link></li>
+                <li><Link to='chart/billboard'><span className='icon'></span>Billboard CHART</Link></li>
             </ul>
             <h2>playlist</h2>
             <ul>
@@ -88,13 +88,14 @@ const Header = () => {
                 {playlistLinks}
                 <li>
                     {showInput ? (
-                        <div>
+                        <div className="input-container">
                             <input
                                 type='text'
                                 value={newItem}
                                 onChange={handleInputChange}
+                                className="input-box"
                             />
-                            <button onClick={handleAddItem}>Add</button>
+                            <button className="add-button" onClick={handleAddItem}>Add</button>
                         </div>
                     ) : (
                         <Link to='#' onClick={handleAddClick}><span className='icon2'><FcPlus /></span>Create</Link>

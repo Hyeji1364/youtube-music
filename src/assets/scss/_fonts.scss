@@ -93,3 +93,17 @@
         url("https://cdn.jsdelivr.net/gh/websfont/eduAll/eduAll-Bold.ttf") format("truetype");
     font-display: swap;
 }
+
+@font-face {
+    font-family: 'TTLaundryGothicB';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/TTLaundryGothicB.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

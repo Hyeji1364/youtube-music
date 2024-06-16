@@ -15,7 +15,7 @@
         h2 {
             text-align: center;
             font-size: 1.25rem;
-            font-family: var(--fontJ);
+            font-family: var(--fontY);
             font-weight: 300;
             margin-bottom: 10px;
             color: var(--black300);
@@ -158,7 +158,7 @@
         h3 {
             text-align: center;
             font-size: 1.25rem;
-            font-family: var(--fontJ);
+            font-family: var(--fontT);
             font-weight: 300;
             margin-bottom: 10px;
             color: var(--black300);
@@ -193,7 +193,7 @@
                 .title {
                     width: calc(100% - 80px);
                     max-height: 45px;
-                    font-family: var(--fontJ);
+                    font-family: var(--fontT);
                     font-weight: 300;
                     overflow: hidden;
                     text-overflow: ellipsis;
