@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Chart from '../components/Chart';
+import '../assets/scss/_playlist.scss'; // 추가: 스타일 파일 import
 
 const Playlist = () => {
     const { id } = useParams();
@@ -9,6 +10,19 @@ const Playlist = () => {
     useEffect(() => {
         const storedPlaylist = JSON.parse(localStorage.getItem(id)) || { name: '', items: [] };
         setPlaylist(storedPlaylist);
+    }, [id]);
+
+    useEffect(() => {
+        const handleStorageChange = () => {
+            const updatedPlaylist = JSON.parse(localStorage.getItem(id)) || { name: '', items: [] };
+            setPlaylist(updatedPlaylist);
+        };
+
+        window.addEventListener('storage', handleStorageChange);
+
+        return () => {
+            window.removeEventListener('storage', handleStorageChange);
+        };
     }, [id]);
 
     return (

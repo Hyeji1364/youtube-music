@@ -1,0 +1,37 @@
+#playlist {
+    padding: 20px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+
+    .music-chart {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        .title {
+            margin-bottom: 20px;
+
+            h2 {
+                font-size: 2rem;
+                color: #333;
+            }
+        }
+
+        .list {
+            ul {
+                list-style: none;
+                padding: 0;
+
+                li {
+                    padding: 10px;
+                    font-size: 1.2rem;
+                    color: #666;
+                }
+            }
+        }
+    }
+}
