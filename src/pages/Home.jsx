@@ -11,7 +11,7 @@ const Home = () => {
     useEffect(() => {
         const fetchVideos = async () => {
             try {
-                const keyword = 'K-pop 최신'; // 검색 키워드 예시
+                const keyword = 'K-pop 플레이 리스트'; // 검색 키워드 예시
                 const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY;
                 const response = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${keyword}&type=video&maxResults=6&key=${apiKey}`);
                 const data = await response.json();
@@ -62,7 +62,7 @@ const Home = () => {
     return (
         <div id="homePage">
             <section className="welcome-section">
-                <h1>환영합니다!</h1>
+                <h1>🎉 환영합니다!</h1>
                 <p>이 사이트에서 다양한 차트의 순위를 보고, 좋아하는 차트를 클릭하여 바로 재생할 수 있습니다.</p>
             </section>
 
