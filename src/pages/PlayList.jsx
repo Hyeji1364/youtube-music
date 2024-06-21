@@ -25,11 +25,18 @@ const Playlist = () => {
         };
     }, [id]);
 
+    const handleRemoveTrack = (index) => {
+        const updatedItems = playlist.items.filter((_, i) => i !== index);
+        const updatedPlaylist = { ...playlist, items: updatedItems };
+        setPlaylist(updatedPlaylist);
+        localStorage.setItem(id, JSON.stringify(updatedPlaylist));
+    };
+
     return (
         <section id="playlist">
             {playlist.items.length > 0 ? (
                 <Chart
-                    title={`${playlist.name} 리스트`}
+                    title={`${playlist.name} List 🎵`}
                     data={playlist.items}
                     showCalendar={false}
                 />
@@ -40,7 +47,12 @@ const Playlist = () => {
                     </div>
                     <div className="list">
                         <ul>
-                            <li>!!아직 리스트가 없습니다. 노래를 추가해주세요!</li>
+                            {playlist.items.map((item, index) => (
+                                <li key={index}>
+                                    {item.title}
+                                    <button className="delete-button" onClick={() => handleRemoveTrack(index)}>삭제</button>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </section>

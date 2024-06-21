@@ -11,7 +11,7 @@ const Home = () => {
     useEffect(() => {
         const fetchVideos = async () => {
             try {
-                const keyword = 'K-pop 플레이 리스트'; // 검색 키워드 예시
+                const keyword = 'K-pop 리스트 목록 추천 '; // 검색 키워드 예시
                 const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY;
                 const response = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${keyword}&type=video&maxResults=6&key=${apiKey}`);
                 const data = await response.json();

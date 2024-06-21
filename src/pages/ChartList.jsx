@@ -14,7 +14,7 @@ const ChartList = () => {
     const [selectedDate, setSelectedDate] = useState(yesterday);
 
     const formattedDate = selectedDate.toISOString().split('T')[0];
-    const url = `https://raw.githubusercontent.com/Hyeji1364/music-best/main/${id}/${id}100_${formattedDate}.json`;
+    const url = `https://raw.githubusercontent.com/webs9919/music-best/main/${id}/${id}100_${formattedDate}.json`;
     const { data, loading, error } = useFetchData(url);
 
     if (loading) return <Loading loading={loading} />;

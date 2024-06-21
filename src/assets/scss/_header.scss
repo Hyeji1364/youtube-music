@@ -2,15 +2,34 @@
     position: fixed;
     left: 0;
     top: 0;
-    width: 300px;
+    width: 260px;
     height: 100vh;
     background-color: var(--white);
     box-shadow: 0 0 10px var(--white200);
     overflow-y: auto; /* 스크롤바 보이기 */
-    margin-right: 1rem;
+
+    /* 스크롤바 스타일 */
+    &::-webkit-scrollbar {
+        width: 12px;
+        height: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #e4e8f3; /* 스크롤바 트랙 배경색 */
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #92b0e0 0%, #c2e9fb 100%); /* 하늘색 그라데이션 */
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, #76a6ef 0%, #9bcdff 100%); /* 호버 시 더 진한 하늘색 그라데이션 */
+    }
 
     h1 {
-        padding: 2rem 2rem 1rem 2rem;
+        padding: 2rem 0rem 1rem 1rem;
 
         a {
             font-size: 25px;
@@ -27,11 +46,12 @@
         color: var(--white400);
         text-transform: uppercase;
         letter-spacing: 2px;
-        padding: 2rem 2rem 1rem 2rem;
+        padding: 2rem 0rem 0rem 1rem;
     }
 
     ul {
-        padding: 0 2rem; /* 여백 추가 */
+        padding: 0 rem; /* 여백 추가 */
+        margin-right: 1rem;
 
         li {
             color: var(--black500);
@@ -44,6 +64,9 @@
             background-color: #e4e8f3;
             border-radius: 50px;
             margin: 10px 0; /* 상하 여백 조정 */
+            justify-content: center;
+            align-items: center;
+            margin-left: 1rem;
 
             a {
                 display: inline-block;
@@ -109,7 +132,7 @@
                 border: none;
                 color: red;
                 cursor: pointer;
-                margin-left: 10px;
+                margin-left: 5px;
                 padding: 0;
             }
         }
@@ -122,16 +145,17 @@
             .input-box {
                 flex: 1;
                 padding: 5px;
-                font-size: 14px;
+                font-size: 12px; /* 글씨 크기 줄임 */
                 border: 1px solid #ccc;
                 border-radius: 4px;
             }
 
             .add-button {
-                padding: 5px 10px;
+                padding: 3px 7px; /* 패딩 조정 */
                 margin-left: 5px;
                 background-color: #4caf50;
                 color: white;
+                font-size: 12px; /* 글씨 크기 줄임 */
                 border: none;
                 border-radius: 4px;
                 cursor: pointer;
