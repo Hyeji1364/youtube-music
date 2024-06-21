@@ -17,7 +17,7 @@ Kpop 플레이리스트라고 설정해두었으므로, 해당하는 음악을 �
 ## 왼쪽 Chart 메뉴
 ![image](https://github.com/Hyeji1364/youtube-music/assets/161557112/c7f45394-393b-48ef-991e-d1ecee7d6be5)
 <br>
-각 사이트의 차트 Top100을 볼 수 있습니다.<
+각 사이트의 차트 Top100을 볼 수 있습니다.
 <br>
 
 ![image](https://github.com/Hyeji1364/youtube-music/assets/161557112/1dc1767f-ce81-450f-914f-4ac356e35543)
