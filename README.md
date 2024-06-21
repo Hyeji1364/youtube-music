@@ -53,6 +53,7 @@ Kpop 플레이리스트라고 설정해두었으므로, 해당하는 음악을 �
 
 ### 4. 플레이 리스트 추가 / 삭제
   플레이 리스트를 클릭하면 delete버튼이 뜨고, create를 통해 Playlist를 추가할 수 있습니다.
+  <br>
   ![image](https://github.com/Hyeji1364/youtube-music/assets/161557112/caf4173e-0cc2-470a-ac38-26141bf711f9)
  
 <br>
