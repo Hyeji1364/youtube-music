@@ -33,6 +33,7 @@ Kpop 플레이리스트라고 설정해두었으므로, 해당하는 음악을 �
 ## 1. play버튼 : 오른쪽 Now Playing에 해당 음악의 결과가 플레이 됩니다. <br>
 <br>
 👀 예시 사진
+
 ![image](https://github.com/Hyeji1364/youtube-music/assets/161557112/86cb3422-139d-415e-8750-85b05ee7faa2)
 
 <br>
