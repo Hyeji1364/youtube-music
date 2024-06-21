@@ -21,11 +21,14 @@ Kpop 플레이리스트라고 설정해두었으므로, 해당하는 음악을 �
 <br>
 
 ![image](https://github.com/Hyeji1364/youtube-music/assets/161557112/1dc1767f-ce81-450f-914f-4ac356e35543)
+<br>
 날짜를 클릭하면 해당 날짜에 해당하는 차트를 보도록 기능을 구현하였습니다.
 
 ## 각 차트 클릭시
 ![image](https://github.com/Hyeji1364/youtube-music/assets/161557112/f40b6774-ab40-441d-b873-2259f255ee66)
-각 차트를 클릭하면 클릭한 차트의 유튜브 검색결과를 확인할 수 있습니다. <br>
+<br>
+각 차트를 클릭하면 클릭한 차트의 유튜브 검색결과를 확인할 수 있습니다. 
+<br>
 
 1. play버튼 : 오른쪽 Now Playing에 해당 음악의 결과가 플레이 됩니다. <br>
 <br>
