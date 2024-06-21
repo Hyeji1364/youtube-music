@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-
+import { Link, useHistory } from 'react-router-dom'; // useHistory import 추가
 import { FcRating, FcPlus, FcApproval } from "react-icons/fc";
 import { IoMusicalNotes } from "react-icons/io5";
 
@@ -9,6 +8,7 @@ const Header = () => {
     const [newItem, setNewItem] = useState(''); // 새 항목의 제목 상태
     const [playlistCount, setPlaylistCount] = useState(0); // 플레이리스트 개수 상태
     const [selectedPlaylist, setSelectedPlaylist] = useState(null); // 선택된 플레이리스트 상태
+    const history = useHistory(); // useHistory 훅 사용
 
     useEffect(() => {
         const count = localStorage.getItem('playlistCount') || 0; // 로컬 스토리지에서 플레이리스트 개수를 가져옴
@@ -53,6 +53,11 @@ const Header = () => {
         setSelectedPlaylist(prevKey => prevKey === playlistKey ? null : playlistKey); // 선택된 플레이리스트 업데이트, 같은 항목을 다시 선택하면 해제
     };
 
+    const handleMyMusicClick = (e) => {
+        e.preventDefault(); // 기본 링크 동작을 막음
+        history.push('/'); // 홈으로 리디렉션
+    };
+
     const playlistLinks = [];
     for (let i = 1; i <= playlistCount; i++) {
         const playlistKey = `playlist${i}`;
@@ -84,7 +89,7 @@ const Header = () => {
             </ul>
             <h2>playlist</h2>
             <ul>
-                <li><Link to='/mymusic'><span className='icon2'><FcRating /></span>Mymusic</Link></li>
+                <li><Link to='/' onClick={handleMyMusicClick}><span className='icon2'><FcRating /></span>Mymusic</Link></li>
                 {playlistLinks}
                 <li>
                     {showInput ? (
