@@ -10,11 +10,11 @@
 ![image](https://github.com/Hyeji1364/youtube-music/assets/161557112/493d6c0b-385c-4f45-a667-f70b46ba0f1d)
 
 
-## 메인 메뉴
+## ✨ 메인 메뉴
 추천영상에는 관리자가 설정해놓은 검색어에 해당하는 영상을 볼 수 있습니다.<br>
 Kpop 플레이리스트라고 설정해두었으므로, 해당하는 음악을 바로 감상이 가능합니다.
 
-## 왼쪽 Chart 메뉴
+## 📈 왼쪽 Chart 메뉴
 ![image](https://github.com/Hyeji1364/youtube-music/assets/161557112/c7f45394-393b-48ef-991e-d1ecee7d6be5)
 <br>
 각 사이트의 차트 Top100을 볼 수 있습니다.
@@ -24,13 +24,13 @@ Kpop 플레이리스트라고 설정해두었으므로, 해당하는 음악을 �
 <br>
 날짜를 클릭하면 해당 날짜에 해당하는 차트를 보도록 기능을 구현하였습니다.
 
-## 각 차트 클릭시
+## 🍳 각 차트 클릭시
 ![image](https://github.com/Hyeji1364/youtube-music/assets/161557112/f40b6774-ab40-441d-b873-2259f255ee66)
 <br>
 각 차트를 클릭하면 클릭한 차트의 유튜브 검색결과를 확인할 수 있습니다. 
 <br>
 
-### 1. play버튼 : 오른쪽 Now Playing에 해당 음악의 결과가 플레이 됩니다. <br>
+### ▶ 1. play버튼 : 오른쪽 Now Playing에 해당 음악의 결과가 플레이 됩니다. <br>
 <br>
 👀 예시 사진
 
@@ -38,12 +38,12 @@ Kpop 플레이리스트라고 설정해두었으므로, 해당하는 음악을 �
 
 <br>
 
-### 2. 재생 버튼 : Play list에 추가됩니다.
+### ➡ 2. 추가버튼 : Play list에 추가됩니다.
 ![image](https://github.com/Hyeji1364/youtube-music/assets/161557112/34aa9ca4-7ac2-4922-af45-0855363ebba4)
 
 <br>
 
-### 3. modal 버튼 : 클릭하면 모달창이 뜨고 왼쪽 플레이리스트에 추가한 목록들이 뜹니다.
+### ⚙ 3. modal 버튼 : 클릭하면 모달창이 뜨고 왼쪽 플레이리스트에 추가한 목록들이 뜹니다.
 여기서 '추가' 버튼을 클릭하면 각 리스트에 내가 추가한 음악을 볼 수 있도록 구현하였습니다.
 ![image](https://github.com/Hyeji1364/youtube-music/assets/161557112/79138b97-92a4-435d-8cdb-2071ab555509)
 <br>
@@ -57,9 +57,6 @@ Kpop 플레이리스트라고 설정해두었으므로, 해당하는 음악을 �
   ![image](https://github.com/Hyeji1364/youtube-music/assets/161557112/caf4173e-0cc2-470a-ac38-26141bf711f9)
  
 <br>
-
-## 메인 메뉴
-
 
 1. node.js 설치 / 버전확인 : node -v
 2. react 설치
