@@ -67,7 +67,8 @@
  
 <br>
 
-### REACT 순서
+### 💛 REACT 초기 세팅
+
 1. node.js 설치 / 버전확인 : node -v
 2. react 설치
 3. npx create-react-app .
