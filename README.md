@@ -18,8 +18,6 @@
 
 ## 📈 Chart 메뉴
 ![image](https://github.com/user-attachments/assets/15a0e5de-c1ad-42e6-9bf9-e1fd82c03223)
-
-<br>
 각 사이트의 차트 Top100을 볼 수 있습니다.
 
 <br>
