@@ -34,6 +34,10 @@
 
 ![image](https://github.com/user-attachments/assets/bcef3812-8546-40c9-a551-319553641afe)
 
+🕐 사진과 같이 날짜 선택이 가능합니다.
+
+---
+
 
 ## 🍳 각 차트 클릭시
 ![image](https://github.com/user-attachments/assets/d40762ca-1625-4f6c-99cd-5e527736a190)
