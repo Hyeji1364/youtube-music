@@ -20,17 +20,16 @@
 ![image](https://github.com/user-attachments/assets/15a0e5de-c1ad-42e6-9bf9-e1fd82c03223)
 
 각 사이트의 차트 Top100을 볼 수 있습니다.
-<br>
+---
 
 ![image](https://github.com/user-attachments/assets/49091cba-27e4-4b75-896c-64d14ff90222)
 
 클릭시, 해당하는 차트의 현재 날짜인 Top100이 뜹니다.
-<br>
+---
 
 ![image](https://github.com/user-attachments/assets/bcef3812-8546-40c9-a551-319553641afe)
 날짜를 클릭하면 해당 날짜에 해당하는 차트를 보도록 기능을 구현하였습니다.
-
-<br>
+---
 
 ## 🍳 각 차트 클릭시
 ![image](https://github.com/user-attachments/assets/d40762ca-1625-4f6c-99cd-5e527736a190)
